@@ -2,7 +2,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { IconDownload } from './IconDownload';
 import { ContentfulItem, ImageFields } from './../types/interface';
@@ -14,14 +13,6 @@ interface BannerWithFilesProps {
   firstFileMedia: any;
   secondFileMedia: any;
 }
-
-// const DocumentToReactComponents = dynamic(
-//   () =>
-//     import('@contentful/rich-text-react-renderer').then(
-//       (mod) => mod.documentToReactComponents as (document: any) => React.ReactNode
-//     ),
-//   { ssr: false }
-// );
 
 const BannerWithFiles = ({
   item,
@@ -81,9 +72,6 @@ const BannerWithFiles = ({
               transition={{ duration: 1, delay: 1.5, ease: 'easeOut' }}
             >
               <div className='block-desc mb-6'>
-                {/* {DocumentToReactComponents && item.fields.description && (
-                  <DocumentToReactComponents document={item.fields.description} />
-                )} */}
                 {documentToReactComponents(item.fields.description)}
               </div>
             </motion.div>
