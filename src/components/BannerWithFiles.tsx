@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { IconDownload } from './IconDownload';
 import { ContentfulItem, ImageFields } from './../types/interface';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 interface BannerWithFilesProps {
   item: ContentfulItem;
   imageTop?: { fields: ImageFields };
@@ -14,13 +15,13 @@ interface BannerWithFilesProps {
   secondFileMedia: any;
 }
 
-const DocumentToReactComponents = dynamic(
-  () =>
-    import('@contentful/rich-text-react-renderer').then(
-      (mod) => mod.documentToReactComponents as (document: any) => React.ReactNode
-    ),
-  { ssr: false }
-);
+// const DocumentToReactComponents = dynamic(
+//   () =>
+//     import('@contentful/rich-text-react-renderer').then(
+//       (mod) => mod.documentToReactComponents as (document: any) => React.ReactNode
+//     ),
+//   { ssr: false }
+// );
 
 const BannerWithFiles = ({
   item,
@@ -80,9 +81,10 @@ const BannerWithFiles = ({
               transition={{ duration: 1, delay: 1.5, ease: 'easeOut' }}
             >
               <div className='block-desc mb-6'>
-                {DocumentToReactComponents && item.fields.description && (
+                {/* {DocumentToReactComponents && item.fields.description && (
                   <DocumentToReactComponents document={item.fields.description} />
-                )}
+                )} */}
+                {documentToReactComponents(item.fields.description)}
               </div>
             </motion.div>
             <motion.div

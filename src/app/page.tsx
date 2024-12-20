@@ -92,31 +92,31 @@ export default async function HomePage() {
             );
           } else if (contentType === 'contentBlok') {
             return <ContentBlok key={index} item={item} options={options} />;
-          } //  else if (contentType === 'banerWithFiles') {
-          //   const imageTop = data.includes?.Asset?.find(
-          //     (asset: any) => asset.sys.id === item.fields.imageTop?.sys.id
-          //   );
-          //   const imageBottom = data.includes?.Asset?.find(
-          //     (asset: any) => asset.sys.id === item.fields.imageBottom?.sys.id
-          //   );
-          //   const firstFileMedia = data.includes?.Asset?.find(
-          //     (asset: any) => asset.sys.id === item.fields.firstFileMedia?.sys.id
-          //   );
-          //   const secondFileMedia = data.includes?.Asset?.find(
-          //     (asset: any) => asset.sys.id === item.fields.secondFileMedia?.sys.id
-          //   );
+          } else if (contentType === 'banerWithFiles') {
+            const imageTop = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.imageTop?.sys.id
+            );
+            const imageBottom = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.imageBottom?.sys.id
+            );
+            const firstFileMedia = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.firstFileMedia?.sys.id
+            );
+            const secondFileMedia = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.secondFileMedia?.sys.id
+            );
 
-          //   return (
-          //     <BannerWithFiles
-          //       key={index}
-          //       item={item}
-          //       imageTop={imageTop}
-          //       imageBottom={imageBottom}
-          //       firstFileMedia={firstFileMedia}
-          //       secondFileMedia={secondFileMedia}
-          //     />
-          //   );
-          // }
+            return (
+              <BannerWithFiles
+                key={index}
+                item={item}
+                imageTop={imageTop}
+                imageBottom={imageBottom}
+                firstFileMedia={firstFileMedia}
+                secondFileMedia={secondFileMedia}
+              />
+            );
+          }
           return null;
         })}
       </>
