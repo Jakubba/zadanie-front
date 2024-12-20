@@ -81,9 +81,6 @@ p {
   width: 100%;
   height: 100%;
   max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   position: relative;
 }
 .block-title {
@@ -189,4 +186,19 @@ img {
   width: 100%;
   overflow: hidden;
   z-index: 80;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  height: 15px;
+}
+tr td:last-child {
+  padding-left: 15px;
+}
+
+.link:hover .icon-download path {
+  fill: black;
 }

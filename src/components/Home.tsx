@@ -1,27 +1,8 @@
+import { FC } from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
-
-interface FileFields {
-  url: string;
-}
-
-interface ImageFields {
-  file: FileFields;
-  title: string;
-}
-
-interface ContentfulItem {
-  fields: {
-    title: string;
-    ctaLink?: string;
-    ctaText?: string;
-    body?: any;
-    backgroundGradient?: boolean;
-    positionImages?: boolean;
-  };
-}
+import { ContentfulItem, ImageFields } from './../types/interface';
 
 interface HomeProps {
   item: ContentfulItem;
@@ -37,10 +18,11 @@ const Home: FC<HomeProps> = ({ item, imageTop, imageBottom }) => {
     : 'image-left-bottom';
   const blockContentClass = item.fields.positionImages ? 'w-full' : 'block-content-right';
   const blockSide = item.fields.positionImages ? '' : 'items-end';
+
   return (
-    <div className={`block-two-image`}>
+    <div className={`flex flex-col`}>
       <div
-        className={`block-two-image-wrapper min-h-[600px] p-20 ${gradientClass} ${blockSide}`}
+        className={`relative w-full max-w-[900px] h-full flex flex-col justify-start min-h-[600px] p-20 m-auto mt-[120px] mb-[240px] ${gradientClass} ${blockSide}`}
       >
         <div className={`block-content h-full flex flex-col ${blockContentClass}`}>
           <h1 className='block-title mb-8'>{item.fields.title}</h1>

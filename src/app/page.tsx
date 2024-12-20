@@ -1,8 +1,9 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import HomeComponent from '@/components/Home';
 import PersonSection from '@/components/PersonSection';
 import ContentBlok from '@/components/ContentBlok';
 import BannerInfo from '@/components/BannerInfo';
+import BusinessDetails from '@/components/BusinessDetails';
+import BannerWithFiles from '@/components/BannerWithFiles';
 
 const url = `${process.env.BASE_URL}/spaces/${process.env.SPACE_ID}/environments/master/entries?access_token=${process.env.ACCESS_TOKEN}`;
 
@@ -70,9 +71,51 @@ export default async function HomePage() {
               />
             );
           } else if (contentType === 'businessDetails') {
+            const mainImage = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.mainImage?.sys.id
+            );
+            const rightSmallImage = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.rightSmallImage?.sys.id
+            );
+            const leftSmallImage = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.leftSmallImage?.sys.id
+            );
+
+            return (
+              <BusinessDetails
+                key={index}
+                item={item}
+                mainImage={mainImage}
+                rightSmallImage={rightSmallImage}
+                leftSmallImage={leftSmallImage}
+              />
+            );
           } else if (contentType === 'contentBlok') {
             return <ContentBlok key={index} item={item} options={options} />;
           } else if (contentType === 'banerWithFiles') {
+            const imageTop = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.imageTop?.sys.id
+            );
+            const imageBottom = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.imageBottom?.sys.id
+            );
+            const firstFileMedia = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.firstFileMedia?.sys.id
+            );
+            const secondFileMedia = data.includes?.Asset?.find(
+              (asset: any) => asset.sys.id === item.fields.secondFileMedia?.sys.id
+            );
+
+            return (
+              <BannerWithFiles
+                key={index}
+                item={item}
+                imageTop={imageTop}
+                imageBottom={imageBottom}
+                firstFileMedia={firstFileMedia}
+                secondFileMedia={secondFileMedia}
+              />
+            );
           }
           return null;
         })}
