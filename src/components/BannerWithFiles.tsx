@@ -33,9 +33,9 @@ const BannerWithFiles = ({
   const imageTopRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageBottomRef = useRef<HTMLDivElement>(null);
-  const isImageTopInView = useInView(imageTopRef, '0px');
-  const isContentInView = useInView(contentRef, '0px');
-  const isImageBottomInView = useInView(imageBottomRef, '0px');
+  const isImageTopInView = useInView(imageTopRef);
+  const isContentInView = useInView(contentRef);
+  const isImageBottomInView = useInView(imageBottomRef);
 
   const gradientClass = item.fields.backgroundGradient ? '' : 'bg-gradient-secondary';
   const blockContentClass = item.fields.positionImages ? 'w-full' : 'block-content-right';
