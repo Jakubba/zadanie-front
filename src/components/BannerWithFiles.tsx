@@ -80,9 +80,9 @@ const BannerWithFiles = ({
               transition={{ duration: 1, delay: 1.5, ease: 'easeOut' }}
             >
               <div className='block-desc mb-6'>
-                {DocumentToReactComponents &&
-                  item.fields.description &&
-                  DocumentToReactComponents(item.fields.description)}
+                {DocumentToReactComponents && item.fields.description && (
+                  <DocumentToReactComponents document={item.fields.description} />
+                )}
               </div>
             </motion.div>
             <motion.div
